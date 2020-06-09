@@ -1,10 +1,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const token = process.argv.length == 2 ? process.env.token : "";
-const welcomeChannelName = "어서오세요!";
-const byeChannelName = "잘가세요!";
-const welcomeChannelComment = "만나서 반갑습니다!";
-const byeChannelComment = "함께한 시간 즐거웠어요!";
+const welcomeChannelName = "어서오세요";
+const byeChannelName = "잘가세요";
+const welcomeChannelComment = "만나서 반갑습니다! 채널을 마음껏 즐겨주세요!";
+const byeChannelComment = "함께한 시간 즐거웠어요! 그럼 안녕히가세요!";
 
 client.on('ready', () => {
   console.log('서버가 활성화 됩니다.');
