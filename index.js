@@ -36,7 +36,7 @@ client.on('message', (message) => {
     return message.reply('완료!');
   }
 
-  if(message.content == '!서버통계') {
+  if(message.content == '!si') {
     let embed = new Discord.RichEmbed()
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
@@ -55,7 +55,7 @@ client.on('message', (message) => {
     let arr = client.guilds.array();
     let list = '';
     list = `\`\`\`css\n`;
-    
+
     for(let i=0;i<arr.length;i++) {
       // list += `${arr[i].name} - ${arr[i].id}\n`
       list += `${arr[i].name}\n`
