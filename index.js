@@ -36,6 +36,37 @@ client.on('message', (message) => {
     return message.reply('완료!');
   }
 
+  if(message.content == '!서버 상태') {
+    let embed = new Discord.RichEmbed()
+    let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
+    var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
+    embed.setColor('#186de6')
+    embed.setAuthor('서버 상태입니다!', img)
+    embed.setFooter(`메니봇`)
+    embed.addBlankField()
+    embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
+    embed.addField('running time', `${duration}`, true);
+    embed.addField('user',         `${client.users.size.toLocaleString()}`, true);
+    embed.addField('server',       `${client.guilds.size.toLocaleString()}`, true);
+    // embed.addField('channel',      `${client.channels.size.toLocaleString()}`, true);
+    embed.addField('Discord.js',   `v${Discord.version}`, true);
+    embed.addField('Node',         `${process.version}`, true);
+    
+    let arr = client.guilds.array();
+    let list = '';
+    list = `\`\`\`css\n`;
+    
+    for(let i=0;i<arr.length;i++) {
+      // list += `${arr[i].name} - ${arr[i].id}\n`
+      list += `${arr[i].name}\n`
+    }
+    list += `\`\`\`\n`
+    embed.addField('list:',        `${list}`);
+
+    embed.setTimestamp()
+    message.channel.send(embed);
+  }
+
   if(message.content == '!이스터에그') {
     let img = 'https://cdn.discordapp.com/attachments/719469621341716504/719505553176657980/d83fddf8036e7dd8.PNG';
     let embed = new Discord.RichEmbed()
