@@ -36,12 +36,12 @@ client.on('message', (message) => {
     return message.reply('완료!');
   }
 
-  if(message.content == '!서버 상태') {
+  if(message.content == '!서버통계') {
     let embed = new Discord.RichEmbed()
     let img = 'https://cdn.discordapp.com/icons/419671192857739264/6dccc22df4cb0051b50548627f36c09b.webp?size=256';
     var duration = moment.duration(client.uptime).format(" D [일], H [시간], m [분], s [초]");
     embed.setColor('#186de6')
-    embed.setAuthor('서버 상태입니다!', img)
+    embed.setAuthor('서버 통계입니다!', img)
     embed.setFooter(`메니봇`)
     embed.addBlankField()
     embed.addField('RAM usage',    `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, true);
@@ -96,6 +96,7 @@ client.on('message', (message) => {
       {name: '!청소', desc: '채팅 청소'},
       {name: '!초대코드', desc: '이 채널 초대코드 표기'},
       {name: '!초대코드2', desc: '봇이 있는 서버 표기'},
+      {name: '!서버통계', desc: '서버 통계를 보여줍니다'},
     ];
     let commandStr = '';
     let embed = new Discord.RichEmbed()
