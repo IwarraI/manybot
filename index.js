@@ -32,7 +32,7 @@ client.on("guildMemberRemove", (member) => {
 client.on('message', (message) => {
   if(message.author.bot) return;
 
-  if(message.content == '!테스트') {
+  if(message.content == '!test') {
     return message.reply('완료!');
   }
 
@@ -57,11 +57,11 @@ client.on('message', (message) => {
       .setFooter('야생의 와카츄', img)
 
     message.channel.send(embed)
-  } else if(message.content == '!도움') {
+  } else if(message.content == '!help') {
     let helpImg = 'https://images-ext-1.discordapp.net/external/RyofVqSAVAi0H9-1yK6M8NGy2grU5TWZkLadG-rwqk0/https/i.imgur.com/EZRAPxR.png';
     let commandList = [
-      {name: '!도움', desc: '도움말'},
-      {name: '!테스트', desc: '서버 테스트'},
+      {name: '!help', desc: '도움말'},
+      {name: '!test', desc: '서버 테스트'},
       {name: '!이스터에그', desc: '이스터에그?!'},
       {name: '!전체공지', desc: 'dm으로 공지를 보냅니다'},
       {name: '!전체공지2', desc: 'embed 형식으로 공지를 보냅니다'},
@@ -83,32 +83,7 @@ client.on('message', (message) => {
 
     embed.addField('Commands: ', commandStr);
 
-    message.channel.send(embed)
-  } else if(message.content == '!초대코드2') {
-    client.guilds.array().forEach(x => {
-      x.channels.find(x => x.type == 'text').createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
-        .then(invite => {
-          message.channel.send(invite.url)
-        })
-        .catch((err) => {
-          if(err.code == 50013) {
-            message.channel.send('**'+x.channels.find(x => x.type == 'text').guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
-          }
-        })
-    });
-  } else if(message.content == '!초대코드') {
-    if(message.channel.type == 'dm') {
-      return message.reply('dm에서 사용할 수 없는 명령어 입니다.');
-    }
-    message.guild.channels.get(message.channel.id).createInvite({maxAge: 0}) // maxAge: 0은 무한이라는 의미, maxAge부분을 지우면 24시간으로 설정됨
-      .then(invite => {
-        message.channel.send(invite.url)
-      })
-      .catch((err) => {
-        if(err.code == 50013) {
-          message.channel.send('**'+message.guild.channels.get(message.channel.id).guild.name+'** 채널 권한이 없어 초대코드 발행 실패')
-        }
-      })
+      
   } else if(message.content.startsWith('!전체공지2')) {
     if(checkPermission(message)) return
     if(message.member != null) { // 채널에서 공지 쓸 때
