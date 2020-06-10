@@ -36,6 +36,15 @@ client.on('message', (message) => {
     return message.reply('완료!');
   }
   
+  function play(guild, song) {
+    const serverQueue = queue.get(guild.id);
+    if (!음악) {
+    serverQueue.voiceChannel.leave();
+    queue.delete(guild.id);
+    return;
+    }
+ }
+
     embed.setTimestamp()
     message.channel.send(embed);
 
